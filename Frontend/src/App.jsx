@@ -1,11 +1,11 @@
-
-import './App.css'
+import AppLayout from "./components/layout/Applayout"
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
-    <></>
+    <>
+      <AppLayout />
+
+    </>
   )
 }
 
