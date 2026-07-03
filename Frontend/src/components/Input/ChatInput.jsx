@@ -2,10 +2,12 @@ import { useState } from "react"
 import SendButton from "./SendButton"
 import AttachButton from "./AttachButton"
 import ModelSelector from "./ModelSelector"
+import useAutoSize from "./AutoResizeTextArea"
 
 function ChatInput(props) {
     const onSend = props.onSend
     let [value, setValue] = useState("")
+    const textareaRef = useAutoSize(value);
     const isEmpty = value.trim() === ""
 
     function handleSend() {
@@ -34,10 +36,12 @@ function ChatInput(props) {
         <footer className="w-full px-6 py-4 bg-zinc-900">
             <div className="mx-auto w-full max-w-4xl rounded-3xl border border-zinc-700 bg-zinc-800 px-5 py-4">
                 <textarea
+                    ref={textareaRef}
                     value={value}
                     onChange={(e) => setValue(e.target.value)}
                     placeholder="Ask me anything..."
-                    className="w-full resize-none bg-transparent text-base text-zinc-100 outline-none"
+                    className="w-full resize-none bg-transparent text-base text-zinc-100 outline-none
+                     max-h-40 outflow-y-auto"
                     onKeyDown={handleKeyDown}
                 />
                 <div className="flex items-center justify-between mt-3">
