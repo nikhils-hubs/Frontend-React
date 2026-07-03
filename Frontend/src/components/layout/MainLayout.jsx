@@ -1,9 +1,12 @@
 import EmptyState from "../chat/chat-Input/EmptyState";
-function MainLayout() {
+import ChatList from "../chat/ChatList";
+function MainLayout(props) {
+    const messages = props.messages
+    const isTyping = props.isTyping
     return (
         <>
-            <main className="flex-1 overflow-y-auto min-h-0 px-6 py-10 flex justify-center bg-zinc-900">
-                <EmptyState />
+            <main className="flex-1 overflow-y-auto min-h-0 px-6 py-10 bg-zinc-900">
+                <ChatList messages={messages} isTyping={isTyping} />
             </main>
         </>
     );
